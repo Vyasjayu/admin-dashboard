@@ -6,23 +6,52 @@ export async function POST(req: Request) {
   try {
     await connectDB();
 
-    const { name, email, password } = await req.json();
+    const body = await req.json();
+    const { name, email, password } = body;
 
-    const existing = await User.findOne({ email });
-    if (existing) {
-      return Response.json({ error: "User already exists" }, { status: 400 });
+    // ✅ Basic validation
+    if (!name || !email || !password) {
+      return Response.json(
+        { error: "All fields are required" },
+        { status: 400 }
+      );
     }
 
+    // ✅ Check existing user
+    const existing = await User.findOne({ email });
+    if (existing) {
+      return Response.json(
+        { error: "User already exists" },
+        { status: 400 }
+      );
+    }
+
+    // ✅ Hash password
     const hashed = await bcrypt.hash(password, 10);
 
+    // ✅ Create user
     const user = await User.create({
       name,
       email,
       password: hashed,
     });
 
-    return Response.json(user);
-  } catch (err) {
-    return Response.json({ error: "Registration failed" }, { status: 500 });
+    // ✅ Never return password
+    return Response.json(
+      {
+        _id: user._id,
+        name: user.name,
+        email: user.email,
+      },
+      { status: 201 }
+    );
+
+  } catch (err: any) {
+    console.error("REGISTER ERROR:", err); // 🔥 IMPORTANT for Vercel logs
+
+    return Response.json(
+      { error: err.message || "Registration failed" },
+      { status: 500 }
+    );
   }
 }
