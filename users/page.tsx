@@ -5,7 +5,6 @@ import { useState } from "react";
 import "./users.css";
 import router from "next/router";
 
-
 export default function UsersPage() {
       const router = useRouter();
   const users = [
