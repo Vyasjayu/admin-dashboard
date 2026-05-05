@@ -1,0 +1,87 @@
+/* Page Layout */
+.apply-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(120deg, #f0f9ff, #e0f2fe);
+}
+
+/* Form Card */
+.apply-card {
+  background: #ffffff;
+  padding: 28px;
+  width: 380px;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  transition: 0.3s;
+}
+
+.apply-card:hover {
+  transform: translateY(-4px);
+}
+
+/* Title */
+.apply-title {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+/* Textarea */
+.apply-textarea {
+  width: 100%;
+  min-height: 100px;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  margin-bottom: 12px;
+  resize: none;
+  transition: 0.3s;
+}
+
+.apply-textarea:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+  outline: none;
+}
+
+/* File Input */
+.apply-file {
+  margin-bottom: 14px;
+  font-size: 14px;
+}
+
+/* Button */
+.apply-btn {
+  width: 100%;
+  padding: 10px;
+  background: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.apply-btn:hover {
+  background: #1d4ed8;
+}
+
+/* Success Message */
+.apply-success {
+  color: green;
+  font-size: 14px;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+/* Error Message */
+.apply-error {
+  color: red;
+  font-size: 14px;
+  text-align: center;
+  margin-bottom: 10px;
+}

@@ -1,0 +1,92 @@
+/* Page Layout */
+.page-container {
+  padding: 24px;
+  background: #f3f4f6;
+  min-height: 100vh;
+}
+
+/* Page Title */
+.page-title {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+/* Grid Layout */
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+/* Card */
+.card {
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 14px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  transition: 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+}
+
+/* Stat Card */
+.stat-title {
+  font-size: 14px;
+  color: #6b7280;
+}
+
+.stat-value {
+  font-size: 22px;
+  font-weight: bold;
+  margin-top: 6px;
+}
+
+/* Jobs List */
+.jobs-grid {
+  display: grid;
+  gap: 16px;
+}
+
+/* Job Card */
+.job-card {
+  background: white;
+  padding: 18px;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.06);
+  transition: 0.3s;
+}
+
+.job-card:hover {
+  transform: translateY(-3px);
+}
+
+/* Job Title */
+.job-title {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+/* Job Location */
+.job-location {
+  color: #6b7280;
+  margin-top: 4px;
+}
+
+/* Apply Button */
+.apply-btn {
+  margin-top: 10px;
+  background: #22c55e;
+  color: white;
+  padding: 6px 14px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.apply-btn:hover {
+  background: #16a34a;
+}

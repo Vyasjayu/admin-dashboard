@@ -1,0 +1,79 @@
+/* Container styling */
+.dashboard-container {
+  background: #f5f7fb;
+  min-height: 100vh;
+  padding: 30px;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* Title */
+.dashboard-title {
+  text-align: center;
+  font-size: 32px;
+  font-weight: 600;
+  margin-bottom: 25px;
+  color: #333;
+}
+
+/* Form Card */
+.form-card {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  margin-bottom: 30px;
+}
+
+/* Input fields */
+.form-control {
+  border-radius: 8px !important;
+  border: 1px solid #ddd;
+}
+
+.form-control:focus {
+  border-color: #4facfe;
+  box-shadow: 0 0 5px rgba(79, 172, 254, 0.5);
+}
+
+/* Button */
+.btn-primary {
+  width: 100%;
+  border-radius: 8px;
+  padding: 10px;
+  font-weight: 500;
+}
+
+/* Table Card */
+.table-card {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* Table */
+.table th {
+  background: #4facfe;
+  color: white;
+  text-align: center;
+}
+
+.table td {
+  text-align: center;
+  vertical-align: middle;
+}
+
+/* Delete button */
+.btn-danger {
+  border-radius: 6px;
+  padding: 5px 10px;
+}
+
+/* Chart Card */
+.chart-card {
+  margin-top: 30px;
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
