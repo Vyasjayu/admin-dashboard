@@ -14,6 +14,45 @@
   font-size: 20px;
   font-weight: bold;
 }
+.subtitle {
+  color: #64748b;
+  font-size: 14px;
+}
+
+.section {
+  margin-top: 30px;
+}
+
+.section h3 {
+  margin-bottom: 10px;
+}
+
+.empty {
+  color: #94a3b8;
+  font-size: 14px;
+}
+
+.delete-btn {
+  background: #ef4444;
+  color: white;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.delete-btn:hover {
+  background: #dc2626;
+}
+.back-btn {
+  background: #4f46e5;
+  color: white;
+  border: none;
+  padding: 10px 20px 10px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 0%;
+}
 
 /* CARDS */
 .cards {
