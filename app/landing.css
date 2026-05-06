@@ -99,11 +99,14 @@
   cursor: pointer;
   border-radius: 6px;
   font-weight: bold;
+  text-decoration: none;
+
 }
 
 .login {
   background: #2c3e50;
   color: white;
+
 }
 
 .register {
