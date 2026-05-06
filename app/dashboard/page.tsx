@@ -3,6 +3,7 @@
 import { useEffect, useState, FormEvent } from 'react';
 import axios from 'axios';
 import { Bar } from 'react-chartjs-2';
+import { useRouter } from "next/navigation";
 import "./dashboard.css";
 
 import {
@@ -24,6 +25,8 @@ interface Product {
 }
 
 export default function Dashboard() {
+  const router = useRouter();
+
   const [loading, setLoading] = useState(false);
   const [products, setProducts] = useState<Product[]>([]);
   const [form, setForm] = useState({
@@ -48,7 +51,9 @@ export default function Dashboard() {
   const addProduct = async (e: FormEvent) => {
     e.preventDefault();
 
-    if (!form.name || !form.price || !form.quantity) return alert('Fill all fields');
+    if (!form.name || !form.price || !form.quantity) {
+      return alert('Please fill all fields');
+    }
 
     setLoading(true);
 
@@ -77,6 +82,9 @@ export default function Dashboard() {
     }
   };
 
+  const totalQuantity = products.reduce((a, b) => a + b.quantity, 0);
+  const totalValue = products.reduce((a, b) => a + b.price * b.quantity, 0);
+
   const chartData = {
     labels: products.map(p => p.name),
     datasets: [
@@ -93,10 +101,17 @@ export default function Dashboard() {
 
       {/* HEADER */}
       <div className="topbar">
-        <h2>Product Dashboard</h2>
+        <div>
+          <h2>📊 Product Dashboard</h2>
+          <p className="subtitle">Manage inventory and track performance</p>
+        </div>
+
+        <button className="back-btn" onClick={() => router.push("/home")}>
+          ← Home
+        </button>
       </div>
 
-      {/* CARDS */}
+      {/* STATS */}
       <div className="cards">
         <div className="card">
           <h4>Total Products</h4>
@@ -105,75 +120,97 @@ export default function Dashboard() {
 
         <div className="card">
           <h4>Total Quantity</h4>
-          <p>{products.reduce((a, b) => a + b.quantity, 0)}</p>
+          <p>{totalQuantity}</p>
         </div>
 
         <div className="card">
           <h4>Total Value</h4>
-          <p>
-            ${products.reduce((a, b) => a + b.price * b.quantity, 0)}
-          </p>
+          <p>₹ {totalValue.toLocaleString()}</p>
         </div>
       </div>
 
       {/* FORM */}
-      <form className="form" onSubmit={addProduct}>
-        <input
-          placeholder="Name"
-          value={form.name}
-          onChange={e => setForm({ ...form, name: e.target.value })}
-        />
+      <div className="section">
+        <h3>Add New Product</h3>
 
-        <input
-          placeholder="Price"
-          value={form.price}
-          onChange={e => setForm({ ...form, price: e.target.value })}
-        />
+        <form className="form" onSubmit={addProduct}>
+          <input
+            placeholder="Product Name"
+            value={form.name}
+            onChange={e => setForm({ ...form, name: e.target.value })}
+          />
 
-        <input
-          type="number"
-          placeholder="Quantity"
-          value={form.quantity}
-          onChange={e => setForm({ ...form, quantity: e.target.value })}
-        />
+          <input
+            type="number"
+            placeholder="Price"
+            value={form.price}
+            onChange={e => setForm({ ...form, price: e.target.value })}
+          />
 
-        <button disabled={loading}>
-          {loading ? 'Adding...' : 'Add Product'}
-        </button>
-      </form>
+          <input
+            type="number"
+            placeholder="Quantity"
+            value={form.quantity}
+            onChange={e => setForm({ ...form, quantity: e.target.value })}
+          />
+
+          <button disabled={loading}>
+            {loading ? 'Adding...' : 'Add Product'}
+          </button>
+        </form>
+      </div>
 
       {/* TABLE */}
-      <div className="tableBox">
-        <table>
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Price</th>
-              <th>Qty</th>
-              <th>Action</th>
-            </tr>
-          </thead>
+      <div className="section">
+        <h3>Product List</h3>
 
-          <tbody>
-            {products.map(p => (
-              <tr key={p._id}>
-                <td>{p.name}</td>
-                <td>${p.price}</td>
-                <td>{p.quantity}</td>
-                <td>
-                  <button onClick={() => deleteProduct(p._id)}>
-                    Delete
-                  </button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+        {products.length === 0 ? (
+          <p className="empty">No products added yet</p>
+        ) : (
+          <div className="tableBox">
+            <table>
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Price</th>
+                  <th>Qty</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                {products.map(p => (
+                  <tr key={p._id}>
+                    <td>{p.name}</td>
+                    <td>₹ {p.price}</td>
+                    <td>{p.quantity}</td>
+                    <td>
+                      <button
+                        className="delete-btn"
+                        onClick={() => deleteProduct(p._id)}
+                      >
+                        Delete
+                      </button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        )}
       </div>
 
       {/* CHART */}
-      <div className="chart">
-        <Bar data={chartData} />
+      <div className="section">
+        <h3>Inventory Overview</h3>
+
+        {products.length > 0 ? (
+          <div className="chart">
+            <Bar data={chartData} />
+          </div>
+        ) : (
+          <p className="empty">No data for chart</p>
+        )}
       </div>
 
     </div>
