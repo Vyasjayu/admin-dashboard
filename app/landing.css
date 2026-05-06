@@ -1,0 +1,148 @@
+.landing-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 60px;
+  min-height: 100vh;
+  background: #f5f6fa;
+}
+
+.landing-content {
+  max-width: 500px;
+}
+
+.landing-content h1 {
+  font-size: 42px;
+  margin-bottom: 10px;
+}
+
+.landing-content p {
+  color: #555;
+  margin-bottom: 20px;
+}
+
+/* STATS */
+.stats {
+  display: flex;
+  gap: 15px;
+  margin: 20px 0;
+  transform: translateY(-3px);
+
+}
+
+.stat-box {
+  background: white;
+  padding: 15px;
+  border-radius: 10px;
+  text-align: center;
+  flex: 1;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+
+}
+.stat-box:hover {
+  transform: translateY(-3px);
+
+}
+
+.stat-box h3 {
+  margin: 0;
+  font-size: 20px;
+}
+
+/* INSIGHTS BOX */
+.insights {
+  margin-top: 20px;
+  background: white;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+.insights:hover {
+  transform: translateY(-3px);
+
+}
+
+.insights h3 {
+  margin-bottom: 10px;
+}
+
+.insights ul {
+  padding-left: 18px;
+}
+
+.insights li {
+  margin-bottom: 5px;
+}
+
+/* make feature cards nicer */
+.feature-card {
+  background: white;
+  padding: 18px;
+  border-radius: 12px;
+  width: 320px;
+  box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+  transition: 0.2s;
+}
+
+.feature-card:hover {
+  transform: translateY(-3px);
+}
+
+/* BUTTONS */
+.btn-group {
+  display: flex;
+  gap: 10px;
+}
+
+.btn {
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  border-radius: 6px;
+  font-weight: bold;
+}
+
+.login {
+  background: #2c3e50;
+  color: white;
+}
+
+.register {
+  background: #27ae60;
+  color: white;
+}
+
+/* FEATURES */
+.landing-image {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.feature-card {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  width: 300px;
+  box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+}
+
+.feature-card h3 {
+  margin-bottom: 5px;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .landing-container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .stats {
+    flex-direction: column;
+  }
+
+  .landing-image {
+    margin-top: 20px;
+    align-items: center;
+  }
+}
