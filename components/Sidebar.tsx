@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import "./styles/layout.css"
 
 type SidebarProps = {
   open: boolean;
