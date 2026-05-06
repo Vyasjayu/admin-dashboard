@@ -22,7 +22,7 @@ export default function Header({
       </h2>
 
 <nav>
-        <Link href="/login" className="logout-btn">Logout</Link>
+        <Link href="/" className="logout-btn">Logout</Link>
 </nav>
       {/* <button className="logout-btn" >
         Logout
